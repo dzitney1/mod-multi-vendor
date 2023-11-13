@@ -115,7 +115,7 @@ public:
 
         switch (action)
         {
-         case 1: // Head
+        case 1: // Head
             CloseGossipMenuFor(player);
             if (player->IsInCombat())
             {
@@ -127,165 +127,165 @@ public:
             {
                 player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_HEAD_LIST);
             }            
-             break;
-         case 2: // Neck
-             CloseGossipMenuFor(player);
-             if (player->IsInCombat())
-             {
-                 CloseGossipMenuFor(player);
-                 player->GetSession()->SendNotification("You are in combat!");
-                 return false;
-             }
-             else if (player->getClassMask())
-             {
-                 player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_NECK_LIST);
-             }
-             break;
-         case 3: // Shoulder
-             CloseGossipMenuFor(player);
-             if (player->IsInCombat())
-             {
-                 CloseGossipMenuFor(player);
-                 player->GetSession()->SendNotification("You are in combat!");
-                 return false;
-             }
-             else if (player->getClassMask())
-             {
-                 player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_SHOULDER_LIST);
-             }
-             break;
-         case 4: // CLOAK
-             CloseGossipMenuFor(player);
-             if (player->IsInCombat())
-             {
+            break;
+        case 2: // Neck
+            CloseGossipMenuFor(player);
+            if (player->IsInCombat())
+            {
                 CloseGossipMenuFor(player);
                 player->GetSession()->SendNotification("You are in combat!");
                 return false;
-             }
-             else if (player->getClassMask())
-             {
+            }
+            else if (player->getClassMask())
+            {
+                player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_NECK_LIST);
+            }
+            break;
+        case 3: // Shoulder
+            CloseGossipMenuFor(player);
+            if (player->IsInCombat())
+            {
+                CloseGossipMenuFor(player);
+                player->GetSession()->SendNotification("You are in combat!");
+                return false;
+            }
+            else if (player->getClassMask())
+            {
+                player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_SHOULDER_LIST);
+            }
+            break;
+        case 4: // CLOAK
+            CloseGossipMenuFor(player);
+            if (player->IsInCombat())
+            {
+                CloseGossipMenuFor(player);
+                player->GetSession()->SendNotification("You are in combat!");
+                return false;
+            }
+            else if (player->getClassMask())
+            {
                 player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_CLOAK_LIST);
-             }
-             break;
-         case 5: // Chest
-             CloseGossipMenuFor(player);
-             if (player->IsInCombat())
-             {
+            }
+            break;
+        case 5: // Chest
+            CloseGossipMenuFor(player);
+            if (player->IsInCombat())
+            {
                 player->GetSession()->SendNotification("You are in combat!");
                 return false;
-             }
-             else if (player->getClassMask())
-             {
+            }
+            else if (player->getClassMask())
+            {
                 player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_CHEST_LIST);
-             }
-             break;
-         case 6: // Wrist
-             CloseGossipMenuFor(player);
-             if (player->IsInCombat())
-             {
+            }
+            break;
+        case 6: // Wrist
+            CloseGossipMenuFor(player);
+            if (player->IsInCombat())
+            {
                 player->GetSession()->SendNotification("You are in combat!");
                 return false;
-             }
-             else if (player->getClassMask())
-             {
+            }
+            else if (player->getClassMask())
+            {
                 player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_WRIST_LIST);
-             }
-             break;
-         case 7: // Hands
-             CloseGossipMenuFor(player);
-             if (player->IsInCombat())
-             {
+            }
+            break;
+        case 7: // Hands
+            CloseGossipMenuFor(player);
+            if (player->IsInCombat())
+            {
                 player->GetSession()->SendNotification("You are in combat!");
                 return false;
-             }
-             else if (player->getClassMask())
-             {
+            }
+            else if (player->getClassMask())
+            {
                 player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_HANDS_LIST);
-             }
-             break;
-         case 8: // Legs
-             CloseGossipMenuFor(player);
-             if (player->IsInCombat())
-             {
+            }
+            break;
+        case 8: // Legs
+            CloseGossipMenuFor(player);
+            if (player->IsInCombat())
+            {
                 player->GetSession()->SendNotification("You are in combat!");
                 return false;
-             }
-             else if (player->getClassMask())
-             {
+            }
+            else if (player->getClassMask())
+            {
                 player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_LEGS_LIST);
-             }
-             break;
-         case 9: // Feet
-             CloseGossipMenuFor(player);
-             if (player->IsInCombat())
-             {
+            }
+            break;
+        case 9: // Feet
+            CloseGossipMenuFor(player);
+            if (player->IsInCombat())
+            {
                 player->GetSession()->SendNotification("You are in combat!");
                 return false;
-             }
-             else if (player->getClassMask())
-             {
+            }
+            else if (player->getClassMask())
+            {
                 player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_FEET_LIST);
-             }
-             break;
-         case 10: // Ring
-             CloseGossipMenuFor(player);
-             if (player->IsInCombat())
-             {
+            }
+            break;
+        case 10: // Ring
+            CloseGossipMenuFor(player);
+            if (player->IsInCombat())
+            {
                 player->GetSession()->SendNotification("You are in combat!");
                 return false;
-             }
-             else if (player->getClassMask())
-             {
+            }
+            else if (player->getClassMask())
+            {
                 player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_RING_LIST);
-             }
-             break;
-         case 11: // Weapon
-             CloseGossipMenuFor(player);
-             if (player->IsInCombat())
-             {
+            }
+            break;
+        case 11: // Weapon
+            CloseGossipMenuFor(player);
+            if (player->IsInCombat())
+            {
                 player->GetSession()->SendNotification("You are in combat!");
                 return false;
-             }
-             else if (player->getClassMask())
-             {
+            }
+            else if (player->getClassMask())
+            {
                 player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_WEAPON_LIST);
-             }
-             break;
-         case 12: // Shield
-             CloseGossipMenuFor(player);
-             if (player->InCombat())
-             {
+            }
+            break;
+        case 12: // Shield
+            CloseGossipMenuFor(player);
+            if (player->InCombat())
+            {
                 player->GetSession()->SendNotification("You are in combat!");
                 return false;
-             }
+            }
             else if (player->getClassMask())
-             {
+            {
                 player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_SHIELD_LIST);
-             }
-             break;
-         case 13: // 2H Weapon
-             CloseGossipMenuFor(player);
-             if (player->IsInCombat())
-             {
+            }
+            break;
+        case 13: // 2H Weapon
+            CloseGossipMenuFor(player);
+            if (player->IsInCombat())
+            {
                 player->GetSession()->SendNotification("You are in combat!");
                 return false;
-             }
+            }
             else if (player->getClassMask())
-             {
+            {
                 player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_2H_WEAPON_LIST);
-             }
-             break;
-         case 14: // Offhand
-             CloseGossipMenuFor(player);
-             if (player->IsInCombat())
-             {
+            }
+            break;
+        case 14: // Offhand
+            CloseGossipMenuFor(player);
+            if (player->IsInCombat())
+            {
                 player->GetSession()->SendNotification("You are in combat!");
                 return false;
-             }
-             else if (player->getClassMask())
-             {
+            }
+            else if (player->getClassMask())
+            {
                 player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_OFFHAND_LIST);
-             }
+            }
             break;
         }
         return true;
