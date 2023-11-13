@@ -40,36 +40,40 @@ SET
 @NpcDisplayID   := 1298
 */
 
-//277_284-------------------------------------
-#define GOSSIP_TEXT_BROWSE_WEAPONS_277_284      "|TInterface/ICONS/Inv_mace_116:24:24:-18|t[Let me browse your Weapons]"
-#define GOSSIP_TEXT_BROWSE_ARMOR_277_284        "|TInterface/ICONS/inv_chest_cloth_04:24:24:-18|t[Show me T10,5 Armor]"
-#define GOSSIP_TEXT_BROWSE_ACCESSORIES_277_284  "|TInterface/ICONS/inv_chest_cloth_04:24:24:-18|t[Show me off set pieces]"
-//264-------------------------------------
-#define GOSSIP_TEXT_BROWSE_WEAPONS_264          "|TInterface/ICONS/Inv_mace_116:24:24:-18|t[Let me browse your Weapons]"
-#define GOSSIP_TEXT_BROWSE_ARMOR_264            "|TInterface/ICONS/inv_chest_cloth_04:24:24:-18|t[Show me T10 Armor]"
-#define GOSSIP_TEXT_BROWSE_ACCESSORIES_264      "|TInterface/ICONS/Inv_jewelry_ring_85:24:24:-18|t[Show me off set pieces]"
-//245 -------------------------------------
-#define GOSSIP_TEXT_BROWSE_WEAPONS_245          "|TInterface/ICONS/Inv_mace_116:24:24:-18|t[Let me browse your Weapons]"
-#define GOSSIP_TEXT_BROWSE_ARMOR_245            "|TInterface/ICONS/inv_chest_cloth_04:24:24:-18|t[Show me T9 Armor please]"
-#define GOSSIP_TEXT_BROWSE_ACCESSORIES_245      "|TInterface/ICONS/Inv_jewelry_ring_85:24:24:-18|t[Show me off set pieces]"
+// trade_goods_enchants-------------------------------------
+
+#define GOSSIP_TEXT_BROWSE_ENCHANT_HEAD "|TInterface/ICONS/inv_helm_armor_cenarion_c_01:24:24:-18|t[Let me browse your Head Enchants]"
+#define GOSSIP_TEXT_BROWSE_ENCHANT_NECK "|TInterface/ICONS/inv_jewelry_necklace_98:24:24:-18|t[Let me browse your Neck Enchants]"
+#define GOSSIP_TEXT_BROWSE_ENCHANT_SHOULDER "|TInterface/ICONS/inv_shoulder_17:24:24:-18|t[Let me browse your Shoulder Enchants]"
+#define GOSSIP_TEXT_BROWSE_ENCHANT_CLOAK "|TInterface/ICONS/spell_shadow_nethercloak:24:24:-18|t[Let me browse your CLOAK Enchants]"
+#define GOSSIP_TEXT_BROWSE_ENCHANT_CHEST "|TInterface/ICONS/inv_chest_plate03:24:24:-18|t[Let me browse your Chest Enchants]"
+#define GOSSIP_TEXT_BROWSE_ENCHANT_WRIST "|TInterface/ICONS/inv_misc_desecrated_clothbracer:24:24:-18|t[Let me browse your Wrist Enchants]"
+#define GOSSIP_TEXT_BROWSE_ENCHANT_HANDS "|TInterface/ICONS/inv_glove_mail_bastion_d_01:24:24:-18|t[Let me browse your Hand Enchants]"
+#define GOSSIP_TEXT_BROWSE_ENCHANT_LEGS "|TInterface/ICONS/inv_pant_leather_legiondungeon_c_03:24:24:-18|t[Let me browse your Leg Enchants]"
+#define GOSSIP_TEXT_BROWSE_ENCHANT_FEET "|TInterface/ICONS/inv_boots_plate_pvpwarrior_c_02:24:24:-18|t[Let me browse your Feet Enchants]"
+#define GOSSIP_TEXT_BROWSE_ENCHANT_RING "|TInterface/ICONS/inv_jewelry_ring_21:24:24:-18|t[Let me browse your Ring Enchants]"
+#define GOSSIP_TEXT_BROWSE_ENCHANT_WEAPON "|TInterface/ICONS/inv_mace_1h_demonweapon_c_01:24:24:-18|t[Let me browse your Weapon Weapon Enchants]"
+#define GOSSIP_TEXT_BROWSE_ENCHANT_SHIELD "|TInterface/ICONS/inv_shield_13:24:24:-18|t[Let me browse your Shield Enchants]"
+#define GOSSIP_TEXT_BROWSE_ENCHANT_2H_WEAPON "|TInterface/ICONS/inv_staff_01:24:24:-18|t[Let me browse your 2H Weapon Enchants]"
+#define GOSSIP_TEXT_BROWSE_ENCHANT_OFFHAND "|TInterface/ICONS/inv_misc_orb_04:24:24:-18|t[Let me browse your Offhand Enchants]"
 
 //npc_vendor database
 enum shop_list_id
 {
-    // T10,5 277_284
-    VENDOR_WEAPON_LIST_277_284 =  6666666, 
-    VENDOR_ARMOR_LIST_277_284  =  6666667, 
-    VENDOR_ACCESSOIRES_LIST_277_284 = 6666668,
-  
-    // 264
-    VENDOR_WEAPON_LIST_264 =  6666669, 
-    VENDOR_ARMOR_LIST_264 =  6666670, 
-    VENDOR_ACCESSOIRES_LIST_264 = 6666671,
-
-    // 245
-    VENDOR_WEAPON_LIST_245 =  6666672, 
-    VENDOR_ARMOR_LIST_245 =  6666673, 
-    VENDOR_ACCESSOIRES_LIST_245 = 6666674
+    VENDOR_ENCHANT_HEAD_LIST = 6666666,
+    VENDOR_ENCHANT_NECK_LIST = 6666667,
+    VENDOR_ENCHANT_SHOULDER_LIST = 6666668,
+    VENDOR_ENCHANT_CLOAK_LIST = 6666669,
+    VENDOR_ENCHANT_CHEST_LIST = 6666670,
+    VENDOR_ENCHANT_WRIST_LIST = 6666671,
+    VENDOR_ENCHANT_HANDS_LIST = 6666672,
+    VENDOR_ENCHANT_LEGS_LIST = 6666673,
+    VENDOR_ENCHANT_FEET_LIST = 6666674,
+    VENDOR_ENCHANT_RING_LIST = 6666675,
+    VENDOR_ENCHANT_WEAPON_LIST = 6666676,
+    VENDOR_ENCHANT_SHIELD_LIST = 6666677,
+    VENDOR_ENCHANT_2H_WEAPON_LIST = 6666678,
+    VENDOR_ENCHANT_OFFHAND_LIST = 6666679,
 
 };
 
@@ -78,17 +82,28 @@ enum shop_list_id
 /*NPC_SCRIPTS *********/
 /**********************/
 
-class npc_multi_vendor_277_284 : public CreatureScript
+class npc_enchant_vendor : public CreatureScript
 {
 public:
-    npc_multi_vendor_277_284() : CreatureScript("npc_multi_vendor_277_284") { }
+    npc_enchant_vendor() : CreatureScript("npc_enchant_vendor") {}
 
     bool OnGossipHello(Player* player, Creature* creature) override
     { 
         if (creature->IsVendor())
-            AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_WEAPONS_277_284, GOSSIP_ACTION_TRADE, 1);
-            AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ARMOR_277_284, GOSSIP_ACTION_TRADE, 2);
-            AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ACCESSORIES_277_284, GOSSIP_ACTION_TRADE, 3);
+            AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ENCHANT_HEAD, GOSSIP_ACTION_TRADE, 1);
+            AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ENCHANT_NECK, GOSSIP_ACTION_TRADE, 2);
+            AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ENCHANT_SHOULDER, GOSSIP_ACTION_TRADE, 3);
+            AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ENCHANT_CLOAK, GOSSIP_ACTION_TRADE, 4);
+            AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ENCHANT_CHEST, GOSSIP_ACTION_TRADE, 5);
+            AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ENCHANT_WRIST, GOSSIP_ACTION_TRADE, 6);
+            AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ENCHANT_HANDS, GOSSIP_ACTION_TRADE, 7);
+            AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ENCHANT_LEGS, GOSSIP_ACTION_TRADE, 8);
+            AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ENCHANT_FEET, GOSSIP_ACTION_TRADE, 9);
+            AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ENCHANT_RING, GOSSIP_ACTION_TRADE, 10);
+            AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ENCHANT_WEAPON, GOSSIP_ACTION_TRADE, 11);
+            AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ENCHANT_SHIELD, GOSSIP_ACTION_TRADE, 12);
+            AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ENCHANT_2H_WEAPON, GOSSIP_ACTION_TRADE, 13);
+            AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ENCHANT_OFFHAND, GOSSIP_ACTION_TRADE, 14);
 
         SendGossipMenuFor(player, player->GetGossipTextId(creature), creature->GetGUID());
         return true;
@@ -100,7 +115,7 @@ public:
 
         switch (action)
         {
-         case 1: // WEAPONS
+         case 1: // Head
             CloseGossipMenuFor(player);
             if (player->IsInCombat())
             {
@@ -110,10 +125,10 @@ public:
             }
             else if (player->getClassMask())
             {
-                player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_WEAPON_LIST_277_284);
+                player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_HEAD_LIST);
             }            
              break;
-         case 2: // ARMOR
+         case 2: // Neck
              CloseGossipMenuFor(player);
              if (player->IsInCombat())
              {
@@ -123,10 +138,10 @@ public:
              }
              else if (player->getClassMask())
              {
-               player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ARMOR_LIST_277_284);
+                 player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_NECK_LIST);
              }
              break;
-         case 3: // ACCESSORIES
+         case 3: // Shoulder
              CloseGossipMenuFor(player);
              if (player->IsInCombat())
              {
@@ -136,142 +151,142 @@ public:
              }
              else if (player->getClassMask())
              {
-                player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ACCESSOIRES_LIST_277_284);
+                 player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_SHOULDER_LIST);
              }
              break;
-        }
-        return true;
-    }
-};
-
-class npc_multi_vendor_264 : public CreatureScript
-{
-public:
-    npc_multi_vendor_264() : CreatureScript("npc_multi_vendor_264") { }
-
-    bool OnGossipHello(Player* player, Creature* creature) override
-    { 
-        if (creature->IsVendor())
-            AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_WEAPONS_264, GOSSIP_ACTION_TRADE, 1);
-            AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ARMOR_264, GOSSIP_ACTION_TRADE, 2);
-            AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ACCESSORIES_264, GOSSIP_ACTION_TRADE, 3);
-
-        SendGossipMenuFor(player, player->GetGossipTextId(creature), creature->GetGUID());
-        return true;
-    }
-
-    bool OnGossipSelect(Player* player, Creature* creature, uint32 /*sender*/, uint32 action) override
-    {
-        player->PlayerTalkClass->ClearMenus();
-
-        switch (action)
-        {
-         case 1: // WEAPONS
-            CloseGossipMenuFor(player);
-            if (player->IsInCombat())
-            {
+         case 4: // CLOAK
+             CloseGossipMenuFor(player);
+             if (player->IsInCombat())
+             {
                 CloseGossipMenuFor(player);
                 player->GetSession()->SendNotification("You are in combat!");
                 return false;
-            }
-            else if (player->getClassMask())
-            {
-                player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_WEAPON_LIST_264);
-            }            
-             break;
-         case 2: // ARMOR
-             CloseGossipMenuFor(player);
-             if (player->IsInCombat())
-             {
-                 CloseGossipMenuFor(player);
-                 player->GetSession()->SendNotification("You are in combat!");
-                 return false;
              }
              else if (player->getClassMask())
              {
-               player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ARMOR_LIST_264);
+                player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_CLOAK_LIST);
              }
              break;
-         case 3: // ACCESSORIES
+         case 5: // Chest
              CloseGossipMenuFor(player);
              if (player->IsInCombat())
              {
-                 CloseGossipMenuFor(player);
-                 player->GetSession()->SendNotification("You are in combat!");
-                 return false;
-             }
-             else if (player->getClassMask())
-             {
-                player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ACCESSOIRES_LIST_264);
-             }
-             break;
-        }
-        return true;
-    }
-};
-
-
-class npc_multi_vendor_245 : public CreatureScript
-{
-public:
-    npc_multi_vendor_245() : CreatureScript("npc_multi_vendor_245") { }
-
-    bool OnGossipHello(Player* player, Creature* creature) override
-    { 
-        if (creature->IsVendor())
-            AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_WEAPONS_245, GOSSIP_ACTION_TRADE, 1);
-            AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ARMOR_245, GOSSIP_ACTION_TRADE, 2);
-            AddGossipItemFor(player, GOSSIP_ICON_VENDOR, GOSSIP_TEXT_BROWSE_ACCESSORIES_245, GOSSIP_ACTION_TRADE, 3);
-
-        SendGossipMenuFor(player, player->GetGossipTextId(creature), creature->GetGUID());
-        return true;
-    }
-
-    bool OnGossipSelect(Player* player, Creature* creature, uint32 /*sender*/, uint32 action) override
-    {
-        player->PlayerTalkClass->ClearMenus();
-
-        switch (action)
-        {
-         case 1: // WEAPONS
-            CloseGossipMenuFor(player);
-            if (player->IsInCombat())
-            {
-                CloseGossipMenuFor(player);
                 player->GetSession()->SendNotification("You are in combat!");
                 return false;
-            }
+             }
+             else if (player->getClassMask())
+             {
+                player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_CHEST_LIST);
+             }
+             break;
+         case 6: // Wrist
+             CloseGossipMenuFor(player);
+             if (player->IsInCombat())
+             {
+                player->GetSession()->SendNotification("You are in combat!");
+                return false;
+             }
+             else if (player->getClassMask())
+             {
+                player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_WRIST_LIST);
+             }
+             break;
+         case 7: // Hands
+             CloseGossipMenuFor(player);
+             if (player->IsInCombat())
+             {
+                player->GetSession()->SendNotification("You are in combat!");
+                return false;
+             }
+             else if (player->getClassMask())
+             {
+                player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_HANDS_LIST);
+             }
+             break;
+         case 8: // Legs
+             CloseGossipMenuFor(player);
+             if (player->IsInCombat())
+             {
+                player->GetSession()->SendNotification("You are in combat!");
+                return false;
+             }
+             else if (player->getClassMask())
+             {
+                player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_LEGS_LIST);
+             }
+             break;
+         case 9: // Feet
+             CloseGossipMenuFor(player);
+             if (player->IsInCombat())
+             {
+                player->GetSession()->SendNotification("You are in combat!");
+                return false;
+             }
+             else if (player->getClassMask())
+             {
+                player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_FEET_LIST);
+             }
+             break;
+         case 10: // Ring
+             CloseGossipMenuFor(player);
+             if (player->IsInCombat())
+             {
+                player->GetSession()->SendNotification("You are in combat!");
+                return false;
+             }
+             else if (player->getClassMask())
+             {
+                player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_RING_LIST);
+             }
+             break;
+         case 11: // Weapon
+             CloseGossipMenuFor(player);
+             if (player->IsInCombat())
+             {
+                player->GetSession()->SendNotification("You are in combat!");
+                return false;
+             }
+             else if (player->getClassMask())
+             {
+                player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_WEAPON_LIST);
+             }
+             break;
+         case 12: // Shield
+             CloseGossipMenuFor(player);
+             if (player->InCombat())
+             {
+                player->GetSession()->SendNotification("You are in combat!");
+                return false;
+             }
             else if (player->getClassMask())
-            {
-                player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_WEAPON_LIST_245);
-            }            
+             {
+                player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_SHIELD_LIST);
+             }
              break;
-         case 2: // ARMORS
+         case 13: // 2H Weapon
              CloseGossipMenuFor(player);
              if (player->IsInCombat())
              {
-                 CloseGossipMenuFor(player);
-                 player->GetSession()->SendNotification("You are in combat!");
-                 return false;
+                player->GetSession()->SendNotification("You are in combat!");
+                return false;
              }
-             else if (player->getClassMask())
+            else if (player->getClassMask())
              {
-               player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ARMOR_LIST_245);
+                player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_2H_WEAPON_LIST);
              }
              break;
-         case 3: // ACCESSORIES
+         case 14: // Offhand
              CloseGossipMenuFor(player);
              if (player->IsInCombat())
              {
-                 CloseGossipMenuFor(player);
-                 player->GetSession()->SendNotification("You are in combat!");
-                 return false;
+                player->GetSession()->SendNotification("You are in combat!");
+                return false;
              }
              else if (player->getClassMask())
              {
-                player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ACCESSOIRES_LIST_245);
+                player->GetSession()->SendListInventory(creature->GetGUID(), VENDOR_ENCHANT_OFFHAND_LIST);
              }
-             break;
+            break;
         }
         return true;
     }
@@ -280,7 +295,5 @@ public:
 
 void AddMultiVendor_scripts()
 {
-   new npc_multi_vendor_277_284();
-   new npc_multi_vendor_264();
-   new npc_multi_vendor_245();
+    new npc_enchant_vendor();
 }
